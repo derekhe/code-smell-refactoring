@@ -33,7 +33,7 @@ public class InsuranceQuotationTests {
 	
 	@Test
 	public void anyMotoristUnderTwentyFiveIsHighRisk() throws Exception {
-		assertEquals(RiskFactor.HIGH_RISK, calculateMotoristRisk("1990-01-01", 0));
+		assertEquals(RiskFactor.HIGH_RISK, calculateMotoristRisk("2000-01-01", 0));
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class InsuranceQuotationTests {
 	
 	@Test
 	public void highRiskMotoristsPayPremiumOfSixPercentOfInsuranceValue() throws Exception {
-		InsuranceQuote quote = buildInsuranceQuoteForMotorist("1990-01-01", 0);
+		InsuranceQuote quote = buildInsuranceQuoteForMotorist("2000-01-01", 0);
 		assertEquals(600, quote.calculateInsurancePremium(10000), 0);
 	}
 	
