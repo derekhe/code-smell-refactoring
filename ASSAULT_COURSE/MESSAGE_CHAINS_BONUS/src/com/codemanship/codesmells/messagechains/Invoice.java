@@ -1,8 +1,6 @@
 package com.codemanship.codesmells.messagechains;
 
 import java.util.ArrayList;
-import java.util.Currency;
-import java.util.Iterator;
 import java.util.List;
 
 public class Invoice {
@@ -21,20 +19,16 @@ public class Invoice {
 
 	public double getTotalPrice() {
 		double invoiceTotal = 0;
-		
-		for (Iterator iterator = invoiceItems.iterator(); iterator.hasNext();) {
-			InvoiceItem invoiceItem = (InvoiceItem) iterator.next();
+
+		for (InvoiceItem invoiceItem : invoiceItems) {
 			invoiceTotal += invoiceItem.getSubtotal();
 		}
-		
-		Address address = customer.getAddress();
-		Country country = address.getCountry();
-		
-		if(!country.isInEurope()){
+
+		if(!customer.inEurope()){
 			invoiceTotal += SHIPPING_COST_OUTSIDE_EU;
 		}
 		return invoiceTotal;
 	}
 
-	
+
 }

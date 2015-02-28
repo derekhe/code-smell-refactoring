@@ -12,4 +12,5 @@ public class Customer {
 		return address;
 	}
 
+	boolean inEurope() {return getAddress().getCountry().isInEurope();}
 }
