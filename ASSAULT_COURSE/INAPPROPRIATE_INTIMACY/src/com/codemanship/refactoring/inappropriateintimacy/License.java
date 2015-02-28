@@ -22,6 +22,13 @@ public class License {
 		+ " " + motorist.getSurname() + ", " + Integer.toString(getPoints())
 		+ " points";
 	}
-	
 
+
+	public RiskFactor getRiskFactor() {
+		if(getPoints() > 3)
+			return RiskFactor.HIGH_RISK;
+		if(getPoints() > 0)
+			return RiskFactor.MODERATE_RISK;
+		return RiskFactor.LOW_RISK;
+	}
 }
