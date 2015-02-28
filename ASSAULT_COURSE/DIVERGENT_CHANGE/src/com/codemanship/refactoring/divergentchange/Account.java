@@ -1,7 +1,7 @@
 package com.codemanship.refactoring.divergentchange;
 
 public class Account {
-	
+
 	private int accountNumber;
 	private double balance= 0;
 		
@@ -23,11 +23,6 @@ public class Account {
 
 	public void debit(double amount) {
 		balance -= amount;
-	}
-
-	public String toXml() {
-		return "<account><id>" + Integer.toString(getAccountNumber()) + "</id>" +
-				"<balance>" + Double.toString(getBalance()) + "</balance></account>";
 	}
 
 }
