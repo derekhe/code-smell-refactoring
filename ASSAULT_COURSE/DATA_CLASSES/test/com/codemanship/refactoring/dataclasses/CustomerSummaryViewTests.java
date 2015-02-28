@@ -16,12 +16,18 @@ public class CustomerSummaryViewTests {
 		customer.setFirstName("Jason");
 		customer.setLastName("Gorman");
 		customer.setTitle("Mr");
+		
 		Address address = new Address();
 		address.setCity("London");
 		address.setPostcode("SW23 9YY");
 		address.setCountry("United Kingdom");
+		
 		customer.setAddress(address);
 		CustomerSummaryView order = new CustomerSummaryView(customer);
-		assertEquals("Mr Jason Gorman, London, SW23 9YY, United Kingdom", order.getCustomerSummary());
+
+
+		String customerSummary = order.getCustomerSummary();
+		
+		assertEquals("Mr Jason Gorman, London, SW23 9YY, United Kingdom", customerSummary);
 	}
 }

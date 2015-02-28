@@ -31,7 +31,7 @@ public class SettlementAccountTests {
 	
 
 	@Test
-	public void settlingAccounShouldDeductOwingFromBalance() throws Exception {
+	public void settlingAccountShouldDeductOwingFromBalance() throws Exception {
 		SettlementAccount account = new SettlementAccount();
 		account.credit(100);
 		account.borrow(50);
