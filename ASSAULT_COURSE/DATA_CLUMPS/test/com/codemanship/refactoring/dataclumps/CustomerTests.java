@@ -10,11 +10,11 @@ public class CustomerTests {
 	@Test
 	public void customerAddressSummaryIncludesHouseStreetCityPostCodeAndCountry() throws Exception {
 		Customer customer = new Customer();
-		customer.setHouse("43");
-		customer.setStreet("Rankin Road");
-		customer.setCity("London");
-		customer.setPostcode("SW23 9YY");
-		customer.setCountry("United Kingdom");
-		assertEquals("43, Rankin Road, London, SW23 9YY, United Kingdom", customer.getAddressSummary());
+		Address address = new Address("43", "Rankin Road", "London", "United Kingdom", "SW23 9YY");
+		customer.setAddress(address);
+
+		String addressSummary = customer.getAddressSummary();
+		
+		assertEquals("43, Rankin Road, London, SW23 9YY, United Kingdom", addressSummary);
 	}
 }
