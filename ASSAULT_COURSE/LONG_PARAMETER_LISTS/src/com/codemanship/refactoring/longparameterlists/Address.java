@@ -6,7 +6,13 @@ public class Address {
 	private String postcode;
 	private String country;
 
-	
+	public Address(String city, String postcode, String country)
+	{
+		this.city = city;
+		this.postcode = postcode;
+		this.country = country;
+	}
+
 	public String getCity() {
 		return city;
 	}
@@ -18,24 +24,4 @@ public class Address {
 	public String getPostcode() {
 		return postcode;
 	}
-
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
-	}
-
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public void setPostCode(String postcode) {
-		this.postcode = postcode;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-		
-	}
-
-	
 }

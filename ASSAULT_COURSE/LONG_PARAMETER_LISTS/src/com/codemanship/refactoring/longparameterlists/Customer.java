@@ -1,54 +1,44 @@
 package com.codemanship.refactoring.longparameterlists;
 
-public class Customer {
-	
-	private String firstName;
-	private String lastName;
-	private String title;
-	private Address address;
-	
+public class Customer
+{
 
+    private String firstName;
+    private String lastName;
+    private String title;
+    private Address address;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public Customer(String title, String firstName, String lastName)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.title = title;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getFirstName()
+    {
+        return firstName;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-	public Address getAddress() {
-		return address;
-	}
+    public String getTitle()
+    {
+        return title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setAddress(Address address)
+    {
+        this.address = address;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getSummary()
+    {
+        return getTitle() + " " + getFirstName() + " " + getLastName() + ", " +
+                address.getCity() + ", " + address.getPostcode() + ", " + address.getCountry();
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public String getSummary() {
-		return buildCustomerSummary(getFirstName(), getLastName(), getTitle(), 
-				address.getCity(), address.getPostcode(), address.getCountry());
-	}
-	
-	private String buildCustomerSummary(String customerFirstName, String customerLastName,
-			String customerTitle, String customerCity, String customerPostCode, String customerCountry) {
-		return customerTitle + " " + customerFirstName + " " + customerLastName + ", " +
-		customerCity + ", " + customerPostCode + ", " + customerCountry;
-	}
 }
