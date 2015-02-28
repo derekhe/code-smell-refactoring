@@ -22,15 +22,15 @@ public class Motorist {
 		Calendar calNow = createCalendar(new java.util.Date());   
 		int ageYr = (calNow.get(Calendar.YEAR) - calDateOfBirth.get(Calendar.YEAR));   
 		int ageMo = (calNow.get(Calendar.MONTH) - calDateOfBirth.get(Calendar.MONTH));      
-		return adustYearsDownIfNegativeMonthDifference(ageYr, ageMo);
+		return adjustYearsDownIfNegativeMonthDifference(ageYr, ageMo);
 	}
 
-	private int adustYearsDownIfNegativeMonthDifference(int ageYr, int ageMo) {
-		if (ageMo < 0)   
+	private int adjustYearsDownIfNegativeMonthDifference(int ageYear, int ageMonth) {
+		if (ageMonth < 0)
 		{   
-			ageYr--;   
+			ageYear--;
 		}
-		return ageYr;
+		return ageYear;
 	}
 
 	private Calendar createCalendar(Date date) {
@@ -39,4 +39,14 @@ public class Motorist {
 		return calDateOfBirth;
 	}
 
+	public RiskFactor calculateMotoristRisk() {
+
+		if(getPointsOnLicense() > 3 || getAge() < 25)
+			return RiskFactor.HIGH_RISK;
+
+		if(getPointsOnLicense() > 0)
+			return RiskFactor.MODERATE_RISK;
+
+		return RiskFactor.LOW_RISK;
+	}
 }

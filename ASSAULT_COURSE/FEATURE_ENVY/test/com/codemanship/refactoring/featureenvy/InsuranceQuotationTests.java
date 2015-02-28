@@ -8,10 +8,6 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import com.codemanship.refactoring.featureenvy.InsuranceQuote;
-import com.codemanship.refactoring.featureenvy.Motorist;
-import com.codemanship.refactoring.featureenvy.RiskFactor;
-
 
 public class InsuranceQuotationTests {
 	
@@ -55,7 +51,7 @@ public class InsuranceQuotationTests {
 	}
 	
 	private RiskFactor calculateMotoristRisk(String dateOfBirth, int pointsOnLicense) throws ParseException {
-		return buildInsuranceQuoteForMotorist(dateOfBirth, pointsOnLicense).calculateMotoristRisk();
+		return buildInsuranceQuoteForMotorist(dateOfBirth, pointsOnLicense).motorist.calculateMotoristRisk();
 	}
 
 
