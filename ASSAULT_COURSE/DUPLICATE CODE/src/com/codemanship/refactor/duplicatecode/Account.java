@@ -1,45 +1,56 @@
 package com.codemanship.refactor.duplicatecode;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.ArrayList;
 
-public class Account {
-	
-	private float balance = 0;
-	
-	private List transactions = new ArrayList();
+import static java.util.Calendar.*;
 
-	private String lastTransactionDate;
+public class Account
+{
+    private float balance = 0;
+    private List<Transaction> transactions = new ArrayList<Transaction>();
+    private String lastTransactionDate;
 
-	public float getBalance() {
-		return balance;
-	}
+    public void credit(float amount)
+    {
+        balance += amount;
+        updateTransactions(amount);
+    }
 
-	public void credit(float amount) {
-		balance += amount;
-		transactions.add(new Transaction(true, amount));
-		Calendar calendar = Calendar.getInstance();
-		lastTransactionDate = calendar.get(Calendar.DATE) + "/" +
-						calendar.get(Calendar.MONTH) + "/" + 
-						calendar.get(Calendar.YEAR);
-	}
+    public void debit(float amount)
+    {
+        balance -= amount;
+        updateTransactions(-amount);
+    }
 
-	public void debit(float amount) {
-		balance -= amount;
-		transactions.add(new Transaction(true, -amount));
-		Calendar calendar = Calendar.getInstance();
-		lastTransactionDate = calendar.get(Calendar.DATE) + "/" +
-						calendar.get(Calendar.MONTH) + "/" + 
-						calendar.get(Calendar.YEAR);
-	}
+    private void updateTransactions(float amount)
+    {
+        transactions.add(new Transaction(amount));
+        lastTransactionDate = today();
+    }
 
-	public Transaction getLastTransaction() {
-		return (Transaction)transactions.get(transactions.size()  -1);
-	}
+    private String today()
+    {
+        Calendar calendar = getInstance();
+        return calendar.get(DATE) + "/" +
+                calendar.get(MONTH) + "/" +
+                calendar.get(YEAR);
+    }
 
-	public String getLastTransactionDate() {
-		return lastTransactionDate;
-	}
+    public float getBalance()
+    {
+        return balance;
+    }
+
+    public Transaction getLastTransaction()
+    {
+        return transactions.get(transactions.size() - 1);
+    }
+
+    public String getLastTransactionDate()
+    {
+        return lastTransactionDate;
+    }
 
 }

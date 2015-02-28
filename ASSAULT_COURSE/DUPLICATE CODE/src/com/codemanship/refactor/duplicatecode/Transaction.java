@@ -1,21 +1,18 @@
 package com.codemanship.refactor.duplicatecode;
 
-public class Transaction {
-	
-	private boolean debit;
-	private float amount;
+public class Transaction
+{
 
-	public Transaction(boolean isDebit, float amount) {
-		debit = isDebit;
-		this.amount = amount;
-	}
+    private float amount;
 
-	public boolean isDebit() {
-		return debit;
-	}
+    public Transaction(float amount)
+    {
+        this.amount = amount;
+    }
 
-	public float getAmount() {
-		return amount;
-	}
+    public float getAmount()
+    {
+        return amount;
+    }
 
 }
