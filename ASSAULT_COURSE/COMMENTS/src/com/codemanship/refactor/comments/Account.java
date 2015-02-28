@@ -8,7 +8,7 @@ public class Account {
 	
 	private float balance = 0;
 	
-	private List transactions = new ArrayList();
+	private List<Transaction> transactions = new ArrayList<Transaction>();
 
 	private String lastDebitDate;
 	
@@ -23,30 +23,36 @@ public class Account {
 	}
 
 	public void debit(float amount) {
-		
-		// check amount does not exceed max allowed
-		if(amount > 1000){
-			throw new IllegalArgumentException("Maximum debit amount exceeded");
-		}
-		// deduct amount from balance
-		balance -= amount;
-		
-		// record transaction
-		transactions.add(new Transaction(true, amount));
-		
-		// update last debit date
-		Calendar calendar = Calendar.getInstance();
-		
-		lastDebitDate = calendar.get(Calendar.DATE) + "/" +
-		calendar.get(Calendar.MONTH) + "/" + 
-		calendar.get(Calendar.YEAR);
+		check(amount);
+		settle(amount);
+		recordTransaction(amount);
+
+		lastDebitDate = updateLastDebitDate(Calendar.getInstance());
 	}
 
+	private void settle(float amount) {balance -= amount;}
+
 	public Transaction getLastTransaction() {
-		return (Transaction)transactions.get(transactions.size()  -1);
+		return transactions.get(transactions.size()  -1);
 	}
 
 	public String getLastDebitDate() {
 		return lastDebitDate;
 	}
+
+	private void check(float amount)
+	{
+		if(amount > 1000){
+			throw new IllegalArgumentException("Maximum debit amount exceeded");
+		}
+	}
+
+	private String updateLastDebitDate(Calendar calendar)
+	{
+		return calendar.get(Calendar.DATE) + "/" +
+				calendar.get(Calendar.MONTH) + "/" +
+				calendar.get(Calendar.YEAR);
+	}
+
+	private void recordTransaction(float amount) {transactions.add(new Transaction(true, amount));}
 }
